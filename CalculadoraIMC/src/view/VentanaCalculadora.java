@@ -5,13 +5,12 @@
 package view;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+
 
 
 /**
  *
- * @author DAM2
+ * @author Raul Molina Cordones
  */
 public class VentanaCalculadora extends javax.swing.JFrame {
     
@@ -73,10 +72,6 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         lblClasificacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblClasificacion.setText("Clasificacion:");
 
-        txtResultado.setText("jTextField1");
-
-        txtClasificacion.setText("jTextField2");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,15 +81,16 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPeso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jlbTitulo)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAltura)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(lblAltura)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtAltura))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(lblPeso)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -105,9 +101,9 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                             .addComponent(lblResultado))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtClasificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                            .addComponent(txtResultado))))
-                .addContainerGap(110, Short.MAX_VALUE))
+                            .addComponent(txtResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addComponent(txtClasificacion))))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +118,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAltura)
                     .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -132,7 +128,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClasificacion)
                     .addComponent(txtClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,38 +142,38 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesoActionPerformed
 
-    public int getTxtPeso() {
-        return Integer.parseInt(txtPeso.getText());
-    }
-
+    
     public JButton getBtnCalcular() {
         return btnCalcular;
     }
 
-    public int getTxtAltura() {
-        return Integer.parseInt(txtAltura.getText());
+    public String getTxtAltura() {
+        return txtAltura.getText();
     }
 
-    public void setClasificacion(String clasi) {
-        this.txtClasificacion.setText(clasi);
+    public String getTxtPeso() {
+        return txtPeso.getText();
     }
 
-    public void setResultado(String resul) {
-        this.txtResultado.setText(resul);
+    public void faltanCampos(){
+        txtResultado.setText("Campo/s vacio/s.");
     }
-
     
+    public void camposErroneos(){
+        txtResultado.setText("Introduce unicamente datos correctos");
+    }
     
-    /**
-     * @param args the command line arguments
-     */
+    public void monstrarResultados(float imc,String clasi){
+        txtResultado.setText(Float.toString(imc));
+        txtClasificacion.setText(clasi);
+    }
+
+
     public static void main(String args[]) {
-        
-        
-        
-        
         java.awt.EventQueue.invokeLater(() -> new VentanaCalculadora().setVisible(true));
-    }
+}
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;

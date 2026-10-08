@@ -25,25 +25,47 @@ public class IMCController implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == vista.getBtnCalcular()){
-            calcular(vista.getTxtPeso(),vista.getTxtAltura());
+        verificacionDatos();
+
+    }
+    
+    public void verificacionDatos(){
+
+
+    if (vista.getTxtAltura().trim().isEmpty() || vista.getTxtPeso().trim().isEmpty()) {
+        vista.faltanCampos();
+    } else{
+        try{
+        float peso = Float.parseFloat(vista.getTxtPeso().trim().replace(',', '.'));
+        float altura = Float.parseFloat(vista.getTxtAltura().trim().replace(',', '.'));
+
+        if (altura > 3) {
+            altura = altura / 100;
         }
 
+        calcular(altura,peso);
+        
+        }catch (NumberFormatException e){
+            vista.camposErroneos();
+        }
+    }
+}
+
+    public void calcular(float altura, float peso){
+        
+        float imc = (float)(calculadora.calcular(peso, altura));
+        String clasificacion = calculadora.clasificar(imc);
+
+        vista.monstrarResultados(imc, clasificacion);
+        
+    }
+
     }
     
-    public void calcular(int peso, int altura){
-        double imc = calculadora.calcular(peso, altura);
-        
-        vista.setResultado(String.valueOf(imc));
-        vista.setClasificacion(calculadora.clasificar(imc));
-        
-        
-        
-        
-    }
     
+
 
     
     
     
-}
+
