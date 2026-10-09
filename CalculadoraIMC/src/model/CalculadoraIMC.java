@@ -9,11 +9,12 @@ package model;
  * @author Raul Molina Cordones
  */
 public class CalculadoraIMC {
-    
+    //Método para calcular el imc
     public double calcular(double peso, double altura){
         return peso / (altura * altura);
     }
     
+    //Método para clasificar al usuario segun su imc 
     public String clasificar(double imc){
 
         if(imc < 18.5){

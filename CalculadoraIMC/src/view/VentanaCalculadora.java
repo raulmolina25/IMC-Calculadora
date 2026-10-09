@@ -146,7 +146,8 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     public JButton getBtnCalcular() {
         return btnCalcular;
     }
-
+    
+    //Métodos get para adquirir los datos necesarios para el programa
     public String getTxtAltura() {
         return txtAltura.getText();
     }
@@ -155,14 +156,17 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         return txtPeso.getText();
     }
 
+    //Método para cuando uno o dos campos este vacio
     public void faltanCampos(){
         txtResultado.setText("Campo/s vacio/s.");
     }
     
+    //Método para cuando no se han introduccido bien los datos
     public void camposErroneos(){
         txtResultado.setText("Introduce unicamente datos correctos");
     }
     
+    //Métodos para cuando todo este correcto monstrar los resultados
     public void monstrarResultados(float imc,String clasi){
         txtResultado.setText(Float.toString(imc));
         txtClasificacion.setText(clasi);

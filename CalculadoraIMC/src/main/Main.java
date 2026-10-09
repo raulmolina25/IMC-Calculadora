@@ -6,7 +6,7 @@ package main;
 
 /**
  *
- * @author Raul
+ * @author Raul Molina Cordones
  */
 
 import controller.IMCController;

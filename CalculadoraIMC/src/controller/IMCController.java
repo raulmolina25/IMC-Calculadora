@@ -29,20 +29,25 @@ public class IMCController implements ActionListener {
 
     }
     
+    //Método para verificar que los datos sean correctos
     public void verificacionDatos(){
 
-
+    //Para ver si estan vacios
     if (vista.getTxtAltura().trim().isEmpty() || vista.getTxtPeso().trim().isEmpty()) {
         vista.faltanCampos();
-    } else{
+    } else{ 
+        //el try comprueba si es un numero
         try{
+        //cambia la , por un . - el usuario puede haberlo introducido asi
         float peso = Float.parseFloat(vista.getTxtPeso().trim().replace(',', '.'));
         float altura = Float.parseFloat(vista.getTxtAltura().trim().replace(',', '.'));
 
+        //Por si el usuario ha introduccido la altura en cm la dividimos entre 100
+        //El filtro es de 3metros ya que es practicamente imposible que alguien mida más
         if (altura > 3) {
             altura = altura / 100;
         }
-
+        //Ejecutamos el método calcular(altura, peso)
         calcular(altura,peso);
         
         }catch (NumberFormatException e){
@@ -50,7 +55,7 @@ public class IMCController implements ActionListener {
         }
     }
 }
-
+    //Metodo para calcular el imc y la clasificacion y se muestran los resultados
     public void calcular(float altura, float peso){
         
         float imc = (float)(calculadora.calcular(peso, altura));
