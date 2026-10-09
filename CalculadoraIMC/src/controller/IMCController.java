@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import model.CalculadoraIMC;
 import view.VentanaCalculadora;
@@ -62,6 +63,15 @@ public class IMCController implements ActionListener {
         String clasificacion = calculadora.clasificar(imc);
 
         vista.monstrarResultados(imc, clasificacion);
+        
+        //Reto Adicional: cambiar el color del label
+        if (clasificacion.equals("Peso Normal")) {
+            vista.getLblClasificacion().setForeground(Color.GREEN);
+        } else if (clasificacion.equals("Bajo Peso") || clasificacion.equals("Sobrepeso")) {
+            vista.getLblClasificacion().setForeground(Color.ORANGE);
+        } else if (clasificacion.equals("Obesidad")) {
+            vista.getLblClasificacion().setForeground(Color.RED);
+        }
         
     }
 

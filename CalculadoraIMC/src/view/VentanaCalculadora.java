@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 
 
@@ -146,6 +147,12 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     public JButton getBtnCalcular() {
         return btnCalcular;
     }
+
+    public JLabel getLblClasificacion() {
+        return lblClasificacion;
+    }
+    
+    
     
     //Métodos get para adquirir los datos necesarios para el programa
     public String getTxtAltura() {
